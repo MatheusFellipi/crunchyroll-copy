@@ -1,11 +1,16 @@
-import { useFonts as Fonts } from "expo-font";
+import {
+  useFonts as Fonts,
+  Inter_400Regular,
+  Inter_700Bold,
+} from "@expo-google-fonts/inter";
+
 export const useFonts = () => {
   const [loadedFonts, errosFonts] = Fonts({
-    Inter: require("@tamagui/font-inter/otf/Inter-Medium.otf"),
-    InterBold: require("@tamagui/font-inter/otf/Inter-Bold.otf")
+    Inter: Inter_400Regular,
+    InterBold: Inter_700Bold,
   });
   return {
     loadedFonts,
-    errosFonts
+    errosFonts,
   };
 };

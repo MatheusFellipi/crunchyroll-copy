@@ -1,6 +1,6 @@
 export const appStackTabs = [
   {
-    name: "home",
+    name: "index",
     title: "home",
   },
   {

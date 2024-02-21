@@ -4,7 +4,9 @@ import { NavigationScreens } from "@navigation/routes";
 import { useFonts } from "@shared/hook/font";
 import { SplashScreen } from "expo-router";
 import { NativeBaseProvider } from "native-base";
-
+import { ThemeProvider } from "@react-navigation/native";
+import { theme } from "@shared/constants/colors";
+import { AuthProvider } from "@context/auth.context";
 export { ErrorBoundary } from "expo-router";
 
 export const unstable_settings = {
@@ -28,14 +30,18 @@ export default function RootLayout() {
 
   return (
     <NativeBaseProvider>
-      <SafeAreaView
-        edges={["left", "right", "bottom"]}
-        style={{
-          flex: 1,
-        }}
-      >
-        <NavigationScreens />
-      </SafeAreaView>
+      <ThemeProvider value={theme}>
+        <SafeAreaView
+          edges={["left", "right", "bottom"]}
+          style={{
+            flex: 1,
+          }}
+        >
+          <AuthProvider>
+            <NavigationScreens />
+          </AuthProvider>
+        </SafeAreaView>
+      </ThemeProvider>
     </NativeBaseProvider>
   );
 }

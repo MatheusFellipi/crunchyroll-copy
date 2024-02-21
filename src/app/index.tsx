@@ -1,9 +1,5 @@
-import { Text, View } from "native-base";
+import { AccountsComponent } from "@components/accounts";
 
-export default function PerfilScreens() {
-  return (
-    <View>
-      <Text>oi</Text>
-    </View>
-  );
+export default function AccountsScreens() {
+  return <AccountsComponent></AccountsComponent>;
 }

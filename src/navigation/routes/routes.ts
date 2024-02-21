@@ -1,6 +1,6 @@
 export const appStackRoutes = [
   {
-    name: "index"
+    name: "index",
   },
   {
     name: "(tabs)"
