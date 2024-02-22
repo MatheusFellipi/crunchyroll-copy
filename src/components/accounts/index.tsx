@@ -1,20 +1,12 @@
-import { useAuth } from "@context/auth.context";
+import { Avatar, Center, FlatList, Heading } from "native-base";
+import { Pressable } from "react-native";
 import { TextComponent } from "@shared/components/text";
+import { useAuth } from "@context/auth.context";
 import { useRouter } from "expo-router";
-import {
-  Avatar,
-  Center,
-  FlatList,
-  Heading,
-} from "native-base";
-import { Dimensions, Pressable } from "react-native";
-
-const { height } = Dimensions.get("screen");
 
 export function AccountsComponent() {
-  const router = useRouter()
+  const router = useRouter();
   const { user } = useAuth();
-
   return (
     <Center paddingTop={"20"}>
       <Heading color={"white"}> Quem esta assistindo?</Heading>
@@ -22,7 +14,7 @@ export function AccountsComponent() {
         data={user?.accounts}
         keyExtractor={(item) => item.name}
         renderItem={({ item }) => (
-          <Pressable onPress={()=>router.push("/(tabs)")}>
+          <Pressable onPress={() => router.push("/(tabs)")}>
             <Center marginTop={"10"}>
               <Avatar
                 size="xl"

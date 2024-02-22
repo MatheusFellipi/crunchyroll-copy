@@ -1,3 +1,4 @@
+import { HeaderComponent } from "@components/header";
 import { appStackTabs } from "@navigation/tabs/tabs";
 import { Tabs } from "expo-router";
 
@@ -5,30 +6,35 @@ export const NavigationTabs = () => {
   return (
     <Tabs
       screenOptions={{
+        tabBarActiveBackgroundColor: "white",
+        tabBarActiveTintColor: "orange",
+        tabBarItemStyle: {
+          borderRadius: 50,
+          marginVertical: 6,
+          alignItems: "center",
+          height: 52,
+        },
         tabBarStyle: {
-          borderTopLeftRadius: 24,
-          borderTopRightRadius: 24,
-          paddingBottom: 20,
-          paddingTop: 20,
-          backgroundColor: "#112439",
+          position: "absolute",
+          bottom: 30,
+          left: 20,
+          right: 20,
+          borderRadius: 50,
+          elevation: 5,
           borderTopWidth: 0,
-          height: 97,
-          shadowColor: "#000",
-          shadowOffset: {
-            width: 0,
-            height: 7
-          },
-          shadowOpacity: 0.41,
-          shadowRadius: 9.11,
-          elevation: 14
-        }
+          height: 64,
+          paddingHorizontal: 6,
+        },
       }}
     >
       {appStackTabs.map((item) => (
         <Tabs.Screen
           options={{
+            headerRight: () => <HeaderComponent />,
             tabBarLabel: item.title,
-            headerShown: false,
+            headerTitle: item.title,
+            tabBarAccessibilityLabel: item.title,
+            tabBarIcon: ({ focused }) => item.Icon,
           }}
           name={item.name}
           key={item.name}
