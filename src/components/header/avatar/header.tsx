@@ -1,77 +1,60 @@
-import {
-  Avatar,
- 
-  Icon,
-  Pressable,
-  ScrollView,
-  View,
-} from "native-base";
-import { ModalComponents } from "@shared/components/modal";
-import { useState } from "react";
+import { Avatar, Box, HStack, Icon, Pressable, View } from "native-base";
 import { Dimensions, TouchableOpacity } from "react-native";
 import { useAuth } from "@context/auth.context";
 import { FontAwesome6 } from "@expo/vector-icons";
+import { TextComponent } from "@shared/components/text";
+import { useRouter } from "expo-router";
 
 const { height, width } = Dimensions.get("screen");
 
-export const AvatarComponent = () => {
+export const AvatarHeaderComponent = ({ setOpen }) => {
+  const router = useRouter();
   const { perfil } = useAuth();
-  const [open, setOpen] = useState(false);
 
   return (
     <View>
       <Pressable
-        alignItems={"center"}
-        justifyContent={"center"}
-        width={"10"}
-        height={"10"}
-        onPress={() => setOpen(!open)}
+        onPress={() => {
+          router.push("/perfil");
+          setOpen(false);
+        }}
       >
-        <Avatar
-          size="md"
-          bgColor={"black"}
-          source={{
-            uri:
-              perfil.avatar ||
-              "https://xsgames.co/randomusers/avatar.php?g=pixel",
-          }}
-        />
+        <HStack space={4} marginLeft={"4"} alignItems={"center"}>
+          <Avatar
+            size="xl"
+            bgColor={"black"}
+            source={{
+              uri:
+                perfil.avatar ||
+                "https://xsgames.co/randomusers/avatar.php?g=pixel",
+            }}
+          />
+          <Box>
+            <TextComponent label={perfil.name} />
+            <TextComponent
+              color={"orange.500"}
+              fontSize={"12"}
+              label={"editar perfil"}
+            />
+          </Box>
+        </HStack>
       </Pressable>
 
-      <ModalComponents open={open} close={setOpen}>
-        <ModalComponents open={open} close={setOpen}>
-          <View
-            bgColor={"black"}
-            height={height}
-            width={width}
-            position={"relative"}
-            paddingTop={"16"}
-          >
-            <TouchableOpacity
-              style={{
-                position: "absolute",
-                top: 60,
-                right: 20,
-                width: 40,
-                height: 40,
-                justifyContent: "center",
-                alignItems: "center",
-                zIndex: 60000,
-              }}
-              onPress={() => setOpen(false)}
-            >
-              <Icon
-                as={FontAwesome6}
-                name="xmark"
-                size={"3xl"}
-                color={"white"}
-              />
-            </TouchableOpacity>
-
-            <ScrollView></ScrollView>
-          </View>
-        </ModalComponents>
-      </ModalComponents>
+      <TouchableOpacity
+        style={{
+          position: "absolute",
+          top: 0,
+          right: 10,
+          width: 40,
+          height: 40,
+          justifyContent: "center",
+          alignItems: "center",
+          zIndex: 60000,
+        }}
+        onPress={() => setOpen(false)}
+      >
+        <Icon as={FontAwesome6} name="xmark" size={"3xl"} color={"white"} />
+      </TouchableOpacity>
     </View>
   );
 };

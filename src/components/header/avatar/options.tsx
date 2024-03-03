@@ -1,37 +1,32 @@
-export const option = [
-  {
-    name: "perfil",
-    icon: <></>,
-    route: "",
-  },
+export const options = [
   {
     name: "Catalogo",
-    icon: <></>,
+    icon: "apps",
     route: "",
   },
   {
     name: "Favoritos",
-    icon: <></>,
+    icon: "star",
     route: "",
   },
   {
     name: "offline",
-    icon: <></>,
+    icon: "arrow-down",
     route: "",
   },
   {
     name: "listas",
-    icon: <></>,
+    icon: "bookmark",
     route: "",
   },
   {
     name: "Calendários",
-    icon: <></>,
+    icon: "calendar",
     route: "",
   },
   {
     name: "Simulcasts",
-    icon: <></>,
+    icon: "star",
     route: "",
   },
 ];

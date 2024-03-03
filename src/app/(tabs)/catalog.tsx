@@ -1,9 +1,10 @@
-import { Text, View } from "native-base";
+import { CatalogComponent } from "@components/catalog";
+import {  View } from "native-base";
 
 export default function CatalogScreens() {
   return (
     <View>
-      <Text>oi</Text>
+      <CatalogComponent />
     </View>
   );
 }

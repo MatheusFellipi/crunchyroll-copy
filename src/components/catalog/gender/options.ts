@@ -1,0 +1,92 @@
+export const options = [
+  {
+    name: "Ação",
+    route: "action",
+    icon: "calender",
+    img: "",
+  },
+  {
+    name: "Aventura",
+    route: "adventure",
+    icon: "calender",
+    img: "",
+  },
+  {
+    name: "Comédia",
+    route: "comedy",
+    icon: "calender",
+    img: "",
+  },
+  {
+    name: "Drama",
+    route: "drama",
+    icon: "calender",
+    img: "",
+  },
+  {
+    name: "Fantasia",
+    route: "fantasy",
+    icon: "calender",
+    img: "",
+  },
+  {
+    name: "Música",
+    route: "music",
+    icon: "calender",
+    img: "",
+  },
+  {
+    name: "Romance",
+    route: "romance",
+    icon: "calender",
+    img: "",
+  },
+  {
+    name: "Ficção científica",
+    route: "science-fiction",
+    icon: "calender",
+    img: "",
+  },
+  {
+    name: "Seinen",
+    route: "seinen",
+    icon: "calender",
+    img: "",
+  },
+  {
+    name: "Shoujo",
+    route: "shoujo",
+    icon: "calender",
+    img: "",
+  },
+  {
+    name: "Shounen",
+    route: "shounen",
+    icon: "calender",
+    img: "",
+  },
+  {
+    name: "Slice of life",
+    route: "slice-of-life",
+    icon: "calender",
+    img: "",
+  },
+  {
+    name: "Esporte",
+    route: "sports",
+    icon: "calender",
+    img: "",
+  },
+  {
+    name: "Sobrenatural",
+    route: "supernatural",
+    icon: "calender",
+    img: "",
+  },
+  {
+    name: "Suspense",
+    route: "suspense",
+    icon: "calender",
+    img: "",
+  },
+];

@@ -14,6 +14,9 @@ export const NavigationTabs = () => {
           alignItems: "center",
           height: 52,
         },
+        headerStyle:{
+          backgroundColor:"black"
+        },
         tabBarStyle: {
           position: "absolute",
           bottom: 30,
