@@ -28,11 +28,3 @@ npm run start
 ou
 yarn start
 ```
-## Testes
-
-```bash
-# Rodar o projeto
-npm run test
-ou
-yarn test
-```
