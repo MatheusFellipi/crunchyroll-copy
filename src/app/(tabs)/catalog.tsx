@@ -3,7 +3,7 @@ import {  View } from "native-base";
 
 export default function CatalogScreens() {
   return (
-    <View>
+    <View >
       <CatalogComponent />
     </View>
   );

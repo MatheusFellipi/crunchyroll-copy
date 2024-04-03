@@ -4,7 +4,7 @@ import axios, { AxiosResponse } from "axios";
 
 export type ResponseType<T> = Promise<AxiosResponse<T>>;
 
-const BASE_URL = process.env.API_URL;
+const BASE_URL = "https://kitsu.io/api/edge/";
 
 const Api = () => {
   const instance = axios.create({
@@ -26,9 +26,8 @@ const Api = () => {
   instance.interceptors.response.use(
     (config) => config,
     (error) => {
-      const message = error.response.data.message;
-      if (!message) return;
-      Alert.alert("Aviso", message);
+      const message = error.response.data;
+      console.log(message);
       return Promise.reject(error);
     }
   );

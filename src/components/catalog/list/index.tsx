@@ -1,30 +1,32 @@
-import { FontAwesome6 } from "@expo/vector-icons";
-import { TextComponent } from "@shared/components/text";
-import { useRouter } from "expo-router";
-import { Box, Center, HStack, Icon, Image, Pressable, VStack, View } from "native-base";
+import { FlatList, View } from "native-base";
+import { CardCatalogComponent } from "./card";
+import { useEffect, useState } from "react";
+import { controllerAnime } from "@services/animes";
 
 export const ListCatalogComponent = () => {
-  const router = useRouter()
-  const push = (anime: string) =>  router.push({ pathname: "dynamics/anime/[anime]", params: { anime: anime }} as any)
+  const [data, setData] = useState<AnimeListResponse[]>([]);
+  const [loader, setLoader] = useState(true);
+  const [offset, setOffset] = useState(0);
+
+  const getAnimes = (page: number) => {
+    setOffset(page);
+    controllerAnime.GetSortAlphabet(page).then((res) => {  data.length > 0 ? setData([data,...res]): setData(res) }).finally(() => setLoader(false));
+  };
+
+  useEffect(() => { getAnimes(0) }, []);
+
+
+
   return (
-    <View>
-      <Pressable flexDir={"row"} padding={"4"} onPress={() => push("01")}>
-        <VStack space={1}>
-          <Image source={{ uri: "https://media.kitsu.io/anime/poster_images/1/small.jpg?1431697256", }} alt="Alternate Text"  h={"56"} w={"40"}  />
-          <TextComponent textAlign={"left"} label="Cowboy Bebop"/>
-          <HStack alignItems={"center"}>
-            <Box h={"4"} bg={"red.500"} padding={"0.5"} borderRadius={"5"} borderColor={"white"} borderWidth={"1"}>
-              <Center>
-                <TextComponent fontSize={"8"} textTransform={"uppercase"} label="A16"/> 
-              </Center>
-            </Box>
-            <TextComponent fontSize={"10"} label=" . Dub | Leg"/>    
-          </HStack>
-      </VStack>
-      </Pressable>
-      <Pressable position={"absolute"} bottom={0} right={0} onPress={()=>console.log("oi menu")}>
-        <Icon as={FontAwesome6} name="ellipsis-vertical" />
-      </Pressable>
+    <View w={"full"}>
+      <FlatList data={data} keyExtractor={(item) => item.id} numColumns={2} onEndReached={() => getAnimes(offset + 1)}
+      ListFooterComponent={()=>(<View marginBottom={"1/4"}/>)}
+        renderItem={({ item }) => (
+          <CardCatalogComponent id={item?.id} img={item?.attributes?.posterImage?.small} title={item?.attributes?.canonicalTitle} />
+        )}
+      />
     </View>
   );
 };
+
+
